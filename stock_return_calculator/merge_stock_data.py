@@ -7,7 +7,7 @@ def add_dividends(file_base, file_dividends, output_folder="stock_return_csvs", 
 
     # Read main file
     df_main = pd.read_csv(file_base)
-    df_main["Date"] = pd.to_datetime(df_main["Date"], format="%m/%d/%Y")
+    df_main['Date'] = pd.to_datetime(df_main['Date'], errors='coerce').dt.strftime("%m/%d/%Y")
 
     # Read dividend file
     df_dividends = pd.read_csv(file_dividends)
@@ -52,9 +52,28 @@ def merge_stock_data(file_old_data, file_new_data, output_folder="stock_return_c
     merged_df.to_csv(output_path, index=False)
     print(f"Archivo guardado en: {output_path}")
 
+# Function to add a "Change %" column to get n time price changes.
+def add_change_percentage(file_base, output_folder="stock_return_csvs", output_filename="merged.csv"):
+    output_path = os.path.join(output_folder, output_filename) # Output for the end file.
+
+    # Read main file
+    df_main = pd.read_csv(file_base)
+    df_main['Date'] = pd.to_datetime(df_main['Date'], errors='coerce').dt.strftime("%m/%d/%Y")
+
+    # Check if 'Open' and 'Close' columns exist
+    if 'Open' in df_main.columns and 'Close' in df_main.columns:
+        # Calculate percentage change: ((Close - Open) / Open) * 100
+        df_main["Change %"] = (((df_main["Close"] - df_main["Open"]) / df_main["Open"]) * 100).round(5)
+    else:
+        print("Error: The CSV file must contain 'Open' and 'Close' columns.")
+        return
+
+    # Save the modified file
+    df_main.to_csv(output_path, index=False)
+    print(f"File saved successfully: {output_path}")
+
 if __name__ == "__main__": # Se ejecuta solo en este archivo.
     #file2 = "stock_return_csvs/S&P500(1).csv"
     #merge_stock_data(file1, file2)
-    file1 = "stock_return_csvs/sp500.csv"
-    file2 = "stock_return_csvs/sp500div.csv"
-    add_dividends(file1, file2)
+    file1 = "stock_return_csvs/aapl.csv"
+    add_change_percentage(file1)

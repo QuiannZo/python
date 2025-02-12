@@ -25,9 +25,13 @@ def get_stock_return(df, initial_investment):
     for index, row in df.iterrows():
         # Calculate stock return
         daily_return_str = row["Change %"]
-        daily_ret = float(daily_return_str.replace('%', '')) / 100
+        if "%" in str(daily_return_str):
+            daily_ret = float(daily_return_str.replace('%', '')) / 100
+        else:
+            daily_ret = float(daily_return_str) / 100
         # Get the total new value.
         total = total * (1 + daily_ret)
+        print(f"Día {index}: Cambio {daily_ret*100:.2f}%, Total: {total:.2f}")
 
     print(total)
 
@@ -44,7 +48,10 @@ def get_stock_return_external_dividends(df, initial_investment):
 
         # Calculate stock return
         daily_return_str = row["Change %"]
-        daily_ret = float(daily_return_str.replace('%', '')) / 100
+        if "%" in str(daily_return_str):
+            daily_ret = float(daily_return_str.replace('%', '')) / 100
+        else:
+            daily_ret = float(daily_return_str)
         # Get the total new value.
         total = total * (1 + daily_ret)
 
