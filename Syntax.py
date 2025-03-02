@@ -35,6 +35,7 @@ while x > 0:
     x -= 1
 
 # 4. Listas y Tuplas
+lista_vacia = [] # crea una lista vacia
 my_list = [1, 2, 3, 4, 5] # List are mutable after their creation.
 my_tuple = (1, 2, 3) # Tuples are NOT mutable after their creating, meaning you can't add elements.
 my_list.append(6)  # Agregar elemento
@@ -170,3 +171,85 @@ import json
 data = {"nombre": "Ana", "edad": 22}
 data_json = json.dumps(data)  # Convertir a JSON
 print(json.loads(data_json))  # Convertir de JSON a diccionario
+
+###########################################
+## String functions
+###########################################
+
+# Lista de funciones de cadenas en Python con ejemplos de salida
+s = "  Hello, World!  "
+
+# strip() - Elimina espacios en blanco al inicio y al final
+print(s.strip())  # "Hello, World!"
+# lower() - Convierte la cadena a minúsculas
+print(s.lower())  # "  hello, world!  "
+# upper() - Convierte la cadena a mayúsculas
+print(s.upper())  # "  HELLO, WORLD!  "
+# replace(old, new) - Reemplaza una subcadena por otra
+print(s.replace("Hello", "Hi"))  # "  Hi, World!  "
+# split(delimiter) - Divide la cadena en una lista
+print(s.split(","))  # ['  Hello', ' World!  ']
+# join(iterable) - Une una lista de cadenas en una sola cadena
+words = ["Hello", "World"]
+print(" ".join(words))  # "Hello World"
+# find(sub) - Devuelve la primera posición de la subcadena, -1 si no existe
+print(s.find("World"))  # 9
+# count(sub) - Cuenta cuántas veces aparece una subcadena
+print(s.count("o"))  # 2
+# startswith(prefix) - Comprueba si la cadena comienza con un prefijo
+print(s.startswith("  Hello"))  # True
+# endswith(suffix) - Comprueba si la cadena termina con un sufijo
+print(s.endswith("!  "))  # True
+# capitalize() - Convierte la primera letra en mayúscula y el resto en minúscula
+print("hello world".capitalize())  # "Hello world"
+# title() - Convierte la primera letra de cada palabra en mayúscula
+print("hello world".title())  # "Hello World"
+# swapcase() - Invierte mayúsculas y minúsculas
+print("Hello World".swapcase())  # "hELLO wORLD"
+# isalpha() - Verifica si la cadena contiene solo letras
+print("Hello".isalpha())  # True
+# isdigit() - Verifica si la cadena contiene solo dígitos
+print("12345".isdigit())  # True
+# isalnum() - Verifica si la cadena contiene solo letras y/o números
+print("Hello123".isalnum())  # True
+# isspace() - Verifica si la cadena contiene solo espacios en blanco
+print("   ".isspace())  # True
+# len() - Obtener la longitud del string
+length = len(s)
+
+###########################################
+## Data structures
+###########################################
+
+# Crear un HashMap (diccionario clave - valor)
+mapa = {}
+# Agregar un elemento
+mapa["clave"] = "valor"
+# Obtener un valor
+valor = mapa.get("clave")  # Devuelve el valor si existe, sino None
+# Actualizar un valor
+mapa["clave"] = "nuevo_valor"
+# Eliminar un elemento
+del mapa["clave"]
+# Verificar si una clave existe
+existe = "clave" in mapa  # Devuelve True o False
+# Recorrer todas las claves
+for k in mapa:
+    print(k)
+# Recorrer todas las claves y valores
+for k, v in mapa.items():
+    print(f"{k}: {v}")
+# Obtener todas las claves
+claves = mapa.keys()
+# Obtener todos los valores
+valores = mapa.values()
+# Obtener todos los pares clave-valor
+pares = mapa.items()
+# Eliminar y obtener un valor
+valor_eliminado = mapa.pop("clave", "No encontrado")  # Si la clave no existe, devuelve "No encontrado"
+# Eliminar todos los elementos
+mapa.clear()
+# Obtener tamaño del diccionario
+tamaño = len(mapa)
+# Copiar un diccionario
+nuevo_mapa = mapa.copy()
