@@ -78,9 +78,9 @@ def get_stock_return_external_dividends(df, initial_investment, monthly_contribu
         # Add dividends to the capital
         dividend_row = dividends_df[dividends_df["Date"] == current_date] # Looks for data on the given Date
         if not dividend_row.empty:
-            dividend_yield = dividend_row.iloc[0]["Yield"] / 100  # Convert yield to decimal
-            dividend_payout = (total * dividend_yield) / 4  # Trimestral payment
-            total += dividend_payout  # Reinvest dividends
+            dividend_yield = dividend_row.iloc[0]["Value"] / 100  # Convert yield to decimal
+            dividend_payout = (total * dividend_yield) / 2.75
+            total += dividend_payout
 
         # Calculate stock return
         daily_return_str = row["Change %"]
@@ -102,10 +102,10 @@ def get_return():
     #end_date = input("End date(month/day/year): ")
     #initial_investment = float(input("initial investment: "))
     #monthly_contribution = float(input("monthly contribution: "))
-    start_date = "01/31/1993"
-    end_date = "01/31/2023"
-    initial_investment = 10000.0
-    monthly_contribution = 0.0
+    start_date = "01/01/2009"
+    end_date = "01/01/2025"
+    initial_investment = 24000.0
+    monthly_contribution = 2000.0
 
     # Get data from ticket on the selected range
     df = get_information(ticket, start_date, end_date)
