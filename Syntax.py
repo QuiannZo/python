@@ -41,6 +41,9 @@ my_tuple = (1, 2, 3) # Tuples are NOT mutable after their creating, meaning you 
 my_list.append(6)  # Agregar elemento
 print(my_list[0])  # Acceder al primer elemento
 
+# 4.1 Matrices
+
+
 ## Funciones aplicables a las listas:
 
 len(my_list)        # Obtiene la longitud de la lista (cantidad de elementos) → 6
@@ -216,10 +219,16 @@ print("Hello123".isalnum())  # True
 print("   ".isspace())  # True
 # len() - Obtener la longitud del string
 length = len(s)
+# sorted(str) - Ordenar string alfabeticamente
+sorted = "".join(sorted(s)) # esa forma es para que sea string y no lista
 
 ###########################################
 ## Data structures
 ###########################################
+
+############################
+### Hash Maps
+############################
 
 # Crear un HashMap (diccionario clave - valor)
 mapa = {}
@@ -253,3 +262,49 @@ mapa.clear()
 tamaño = len(mapa)
 # Copiar un diccionario
 nuevo_mapa = mapa.copy()
+
+############################
+### Sets
+############################
+
+# Crear un set
+conjunto = set()
+
+# Agregar elementos
+conjunto.add("elemento1")
+conjunto.add("elemento2")
+
+# Eliminar un elemento (arroja error si no existe)
+conjunto.remove("elemento1")
+
+# Eliminar un elemento sin error si no existe
+conjunto.discard("elemento1")
+
+# Verificar si un elemento existe
+existe = "elemento2" in conjunto  # Devuelve True o False
+
+# Obtener la cantidad de elementos
+tamaño = len(conjunto)
+
+# Recorrer elementos del set
+for elemento in conjunto:
+    print(elemento)
+
+# Unir dos sets
+otro_conjunto = {"elemento3", "elemento4"}
+union = conjunto.union(otro_conjunto)  # Combina ambos sets
+
+# Intersección (elementos comunes)
+interseccion = conjunto.intersection(otro_conjunto)
+
+# Diferencia (elementos en conjunto que no están en otro_conjunto)
+diferencia = conjunto.difference(otro_conjunto)
+
+# Diferencia simétrica (elementos únicos en cada set)
+dif_simetrica = conjunto.symmetric_difference(otro_conjunto)
+
+# Eliminar todos los elementos
+conjunto.clear()
+
+# Copiar un set
+nuevo_conjunto = conjunto.copy()

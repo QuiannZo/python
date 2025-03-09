@@ -60,12 +60,12 @@ def add_change_percentage(file_base, output_folder="stock_return_csvs", output_f
     df_main = pd.read_csv(file_base)
     df_main['Date'] = pd.to_datetime(df_main['Date'], errors='coerce').dt.strftime("%m/%d/%Y")
 
-    # Check if 'Open' and 'Close' columns exist
-    if 'Open' in df_main.columns and 'Close' in df_main.columns:
-        # Calculate percentage change: ((Close - Open) / Open) * 100
-        df_main["Change %"] = (((df_main["Close"] - df_main["Open"]) / df_main["Open"]) * 100).round(5)
+    # Check if 'Open' column exists
+    if 'Open' in df_main.columns:
+        # Calculate percentage change based on previous day's Open price
+        df_main["Change %"] = df_main["Open"].pct_change().mul(100).round(5) # pct_change compares change from the immediate and previous row.
     else:
-        print("Error: The CSV file must contain 'Open' and 'Close' columns.")
+        print("Error: The CSV file must contain an 'Open' column.")
         return
 
     # Save the modified file
@@ -75,5 +75,5 @@ def add_change_percentage(file_base, output_folder="stock_return_csvs", output_f
 if __name__ == "__main__": # Se ejecuta solo en este archivo.
     #file2 = "stock_return_csvs/S&P500(1).csv"
     #merge_stock_data(file1, file2)
-    file1 = "stock_return_csvs/aapl.csv"
+    file1 = "stock_return_csvs/spx.csv"
     add_change_percentage(file1)
