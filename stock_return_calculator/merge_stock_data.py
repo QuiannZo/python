@@ -72,8 +72,27 @@ def add_change_percentage(file_base, output_folder="stock_return_csvs", output_f
     df_main.to_csv(output_path, index=False)
     print(f"File saved successfully: {output_path}")
 
+def clean_div_data(div_file, output_folder="stock_return_csvs", output_filename="clean.csv"):
+    output_path = os.path.join(output_folder, output_filename) # Output for the end file.
+
+    # Read the data (assuming you have it in a CSV file)
+    df = pd.read_csv(div_file)
+
+    # Ensure 'Date' is in datetime format
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+
+    # Filter only the months of interest (March, June, September, December)
+    df_filtered = df[df["Date"].dt.month.isin([3, 6, 9, 12])]
+
+    # Reset index for clarity
+    df_filtered = df_filtered.reset_index(drop=True)
+
+    # Save the cleaned data
+    df_filtered.to_csv(output_path, index=False)
+
 if __name__ == "__main__": # Se ejecuta solo en este archivo.
     #file2 = "stock_return_csvs/S&P500(1).csv"
     #merge_stock_data(file1, file2)
-    file1 = "stock_return_csvs/spx.csv"
-    add_change_percentage(file1)
+    file1 = "stock_return_csvs/sp500d.csv"
+    clean_div_data(file1)
+    #add_change_percentage(file1)
