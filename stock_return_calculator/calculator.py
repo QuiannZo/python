@@ -102,10 +102,10 @@ def get_return():
     #end_date = input("End date(month/day/year): ")
     #initial_investment = float(input("initial investment: "))
     #monthly_contribution = float(input("monthly contribution: "))
-    start_date = "01/01/2009"
+    start_date = "01/01/2000"
     end_date = "01/01/2025"
-    initial_investment = 24000.0
-    monthly_contribution = 2000.0
+    initial_investment = 10000.0
+    monthly_contribution = 1000.0
 
     # Get data from ticket on the selected range
     df = get_information(ticket, start_date, end_date)

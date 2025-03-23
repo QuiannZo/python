@@ -41,40 +41,6 @@ my_tuple = (1, 2, 3) # Tuples are NOT mutable after their creating, meaning you 
 my_list.append(6)  # Agregar elemento
 print(my_list[0])  # Acceder al primer elemento
 
-# 4.1 Matrices
-
-
-## Funciones aplicables a las listas:
-
-len(my_list)        # Obtiene la longitud de la lista (cantidad de elementos) → 6
-sum(my_list)        # Suma los elementos (si son numéricos) → 23
-min(my_list)        # Obtiene el valor mínimo → 1
-max(my_list)        # Obtiene el valor máximo → 9
-sorted(my_list)     # Retorna una nueva lista ordenada → [1, 1, 3, 4, 5, 9]
-list(reversed(my_list))  # Retorna una nueva lista con el orden invertido → [9, 5, 1, 4, 1, 3]
-
-## Add elements
-my_list.append(6)      # Agrega un elemento al final → [3, 1, 4, 1, 5, 9, 6]
-my_list.insert(2, 99)  # Inserta '99' en la posición 2 → [3, 1, 99, 4, 1, 5, 9]
-my_list.extend([7, 8]) # Agrega múltiples elementos al final → [3, 1, 99, 4, 1, 5, 9, 7, 8]
-
-## Delete elements
-my_list.remove(1)   # Elimina la primera aparición de '1' → [3, 99, 4, 1, 5, 9, 7, 8]
-my_list.pop()       # Elimina el último elemento y lo retorna → 8 (lista queda sin el 8)
-my_list.pop(2)      # Elimina el elemento en la posición 2 → [3, 99, 1, 5, 9, 7]
-my_list.clear()     # Elimina todos los elementos → []
-
-## Search elements
-my_list = [3, 1, 4, 1, 5, 9]
-my_list.index(4)    # Retorna el índice donde aparece el 4 → 2
-my_list.count(1)    # Cuenta cuántas veces aparece '1' → 2
-
-## Sort elements
-my_list.sort()       # Ordena la lista en orden ascendente (modifica la lista)
-my_list.sort(reverse=True)  # Ordena en orden descendente
-my_list.reverse()    # Invierte el orden de los elementos
-
-
 # 5. Diccionarios (Key - Value)
 my_dict = {"nombre": "Juan", "edad": 25}
 print(my_dict["nombre"])  # Acceder a un valor
@@ -227,6 +193,41 @@ sorted = "".join(sorted(s)) # esa forma es para que sea string y no lista
 ###########################################
 
 ############################
+### Lists
+############################
+
+# crea una lista vacia
+lista_vacia = []
+
+len(my_list)        # Obtiene la longitud de la lista (cantidad de elementos) → 6
+sum(my_list)        # Suma los elementos (si son numéricos) → 23
+min(my_list)        # Obtiene el valor mínimo → 1
+max(my_list)        # Obtiene el valor máximo → 9
+sorted(my_list)     # Retorna una nueva lista ordenada → [1, 1, 3, 4, 5, 9]
+list(reversed(my_list))  # Retorna una nueva lista con el orden invertido → [9, 5, 1, 4, 1, 3]
+
+## Add elements
+my_list.append(6)      # Agrega un elemento al final → [3, 1, 4, 1, 5, 9, 6]
+my_list.insert(2, 99)  # Inserta '99' en la posición 2 → [3, 1, 99, 4, 1, 5, 9]
+my_list.extend([7, 8]) # Agrega múltiples elementos al final → [3, 1, 99, 4, 1, 5, 9, 7, 8]
+
+## Delete elements
+my_list.remove(1)   # Elimina la primera aparición de '1' → [3, 99, 4, 1, 5, 9, 7, 8]
+my_list.pop()       # Elimina el último elemento y lo retorna → 8 (lista queda sin el 8)
+my_list.pop(2)      # Elimina el elemento en la posición 2 → [3, 99, 1, 5, 9, 7]
+my_list.clear()     # Elimina todos los elementos → []
+
+## Search elements
+my_list = [3, 1, 4, 1, 5, 9]
+my_list.index(4)    # Retorna el índice donde aparece el 4 → 2
+my_list.count(1)    # Cuenta cuántas veces aparece '1' → 2
+
+## Sort elements
+my_list.sort()       # Ordena la lista en orden ascendente (modifica la lista)
+my_list.sort(reverse=True)  # Ordena en orden descendente
+my_list.reverse()    # Invierte el orden de los elementos
+
+############################
 ### Hash Maps
 ############################
 
@@ -308,3 +309,36 @@ conjunto.clear()
 
 # Copiar un set
 nuevo_conjunto = conjunto.copy()
+
+############################
+### Queue (FIFO)
+############################
+
+# Crear una cola vacía
+queue = deque()
+
+# Agregar elementos a la cola (enqueue)
+queue.append("A")
+queue.append("B")
+queue.append("C")
+
+# Eliminar el primer elemento de la cola (dequeue)
+primero = queue.popleft()  # "A"
+
+############################
+### Stack (FILO)
+############################
+
+# Crear una pila vacía (usando lista)
+stack = []
+
+# Agregar elementos a la pila (push)
+stack.append(1)
+stack.append(2)
+stack.append(3)
+
+# Eliminar el último elemento de la pila (pop)
+ultimo = stack.pop()  # 3
+
+# Ver el último elemento sin eliminarlo
+ultimo = stack[-1]  # 2

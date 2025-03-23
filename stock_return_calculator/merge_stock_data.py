@@ -90,9 +90,9 @@ def clean_div_data(div_file, output_folder="stock_return_csvs", output_filename=
     # Save the cleaned data
     df_filtered.to_csv(output_path, index=False)
 
-if __name__ == "__main__": # Se ejecuta solo en este archivo.
+if __name__ == "__main__": # Se ejecuta solo en este archivo
     #file2 = "stock_return_csvs/S&P500(1).csv"
     #merge_stock_data(file1, file2)
-    file1 = "stock_return_csvs/sp500d.csv"
-    clean_div_data(file1)
+    file1 = "stock_return_csvs/brkb.csv"
+    add_change_percentage(file1)
     #add_change_percentage(file1)
