@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 import os
 
 import merge_stock_data
@@ -102,10 +103,18 @@ def get_return():
     #end_date = input("End date(month/day/year): ")
     #initial_investment = float(input("initial investment: "))
     #monthly_contribution = float(input("monthly contribution: "))
-    start_date = "01/01/2000"
-    end_date = "01/01/2025"
-    initial_investment = 10000.0
-    monthly_contribution = 1000.0
+    start_date = "01/01/2014"
+    end_date = "01/01/2024"
+    initial_investment = 50000.0
+    monthly_contribution = 10.0
+
+    # Convertir las fechas a objetos datetime
+    start = datetime.strptime(start_date, "%m/%d/%Y")
+    end = datetime.strptime(end_date, "%m/%d/%Y")
+
+    # Get years on the investment
+    years = round(((end - start).days / 365.2), 2)
+    print("Years: " + str(years))
 
     # Get data from ticket on the selected range
     df = get_information(ticket, start_date, end_date)

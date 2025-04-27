@@ -90,9 +90,23 @@ def clean_div_data(div_file, output_folder="stock_return_csvs", output_filename=
     # Save the cleaned data
     df_filtered.to_csv(output_path, index=False)
 
+# Function to change the date format.
+def format_date(file_base, output_folder="stock_return_csvs", output_filename="date_corrected.csv"):
+    output_path = os.path.join(output_folder, output_filename) # Output for the end file.
+
+    # Read the data
+    df = pd.read_csv(file_base)
+
+    # Ensure 'Date' is in datetime format
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    df["Date"] = df["Date"].dt.strftime("%m/%d/%Y")
+
+    df.to_csv(output_path, index=False)
+
 if __name__ == "__main__": # Se ejecuta solo en este archivo
     #file2 = "stock_return_csvs/S&P500(1).csv"
     #merge_stock_data(file1, file2)
-    file1 = "stock_return_csvs/brkb.csv"
-    add_change_percentage(file1)
+    file1 = "stock_return_csvs/ftec.csv"
     #add_change_percentage(file1)
+    #add_change_percentage(file1)
+    add_change_percentage(file1)

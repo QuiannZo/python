@@ -265,11 +265,15 @@ tamaño = len(mapa)
 nuevo_mapa = mapa.copy()
 
 ############################
-### Sets
+### Sets: listas sin repetidos
 ############################
 
 # Crear un set
 conjunto = set()
+
+# Eliminar repetidos de una lista usando set
+lista = [1, 2, 2, 3, 4, 4, 5]
+sin_duplicados = list(set(lista))
 
 # Agregar elementos
 conjunto.add("elemento1")
